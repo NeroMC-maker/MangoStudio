@@ -1,0 +1,57 @@
+---
+export interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Mango Studio - Agencia especializada en branding y diseño web" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class="magic-cursor" id="magicCursor"></div>
+		<slot />
+		
+		<script>
+			// Aquí puedes incluir JavaScript global que se necesite en todas las páginas
+			// Por ejemplo, el cursor mágico u otros scripts compartidos
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--primary: #FF6B35;
+		--secondary: #F7931E;
+		--accent: #FFD23F;
+		--dark: #2C3E50;
+		--light: #FFFFFF;
+		--gray: #95A5A6;
+		--gradient-main: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FFD23F 100%);
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+		line-height: 1.6;
+		color: var(--dark);
+		overflow-x: hidden;
+	}
+</style>
